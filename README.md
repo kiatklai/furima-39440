@@ -16,8 +16,7 @@
 ### Association
 
 - has_many :items
-- belongs_to :destination
-- belongs_to :buyer
+- has_many :buyers
 
 ## buyers テーブル
 
@@ -30,21 +29,24 @@
 
 - belongs_to :item
 - belongs_to :user
+- belongs_to :destination
 
 ## destinations テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | -----------------------------  |
 | post_code       | string     | null: false                    |
-| prefecture_id   | integer    | null: false                    |
+| area__id        | integer    | null: false                    |
 | city            | string     | null: false                    |
 | address         | string     | null: false                    |
 | building_name   | string     |                                |
 | phone_number    | string     | null: false                    |
+| buyer           | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
+- belongs_to :buyer
+- belongs_to_active_hash :area
 
 ## items テーブル
 
@@ -62,7 +64,7 @@
 
 ### Association
 
-- belongs_to :user dependent: :destroy
+- belongs_to :user
 - belongs_to :buyer
 - has_many :images dependent: :destroy
 - belongs_to_active_hash :category
