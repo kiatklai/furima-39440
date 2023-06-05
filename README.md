@@ -29,14 +29,14 @@
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :destination
+- has_one :destination
 
 ## destinations テーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | -----------------------------  |
 | post_code       | string     | null: false                    |
-| area__id        | integer    | null: false                    |
+| area_id        | integer    | null: false                    |
 | city            | string     | null: false                    |
 | address         | string     | null: false                    |
 | building_name   | string     |                                |
@@ -65,7 +65,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :buyer
+- has_one :buyer
 - has_many :images dependent: :destroy
 - belongs_to_active_hash :category
 - belongs_to_active_hash :item_condition
