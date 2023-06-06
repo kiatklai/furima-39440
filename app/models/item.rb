@@ -7,6 +7,13 @@ class Item < ApplicationRecord
     validates :area
   end
 
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :description
+    validates :price
+  end
+
   belongs_to :user
   has_one_attached :image
 
