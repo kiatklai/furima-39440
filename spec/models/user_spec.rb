@@ -39,6 +39,12 @@ RSpec.describe User, type: :model do
         expect(another_user.errors.full_messages).to include("Email has already been taken")
       end
 
+      it 'emailは@を含まないと登録できない' do
+        @user.email = 'testmail'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Email is invalid')
+      end
+
       it 'first_nameが空では登録できない' do
         @user.first_name = ''
         @user.valid?
@@ -49,6 +55,18 @@ RSpec.describe User, type: :model do
         @user.last_name = ''
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
+      end
+
+      it "名字は全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
+        @user.first_name = "kana"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name は全角ひらがな、全角カタカナ、漢字で入力して下さい")
+      end
+
+      it "名前は全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
+        @user.last_name = "kana"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name は全角ひらがな、全角カタカナ、漢字で入力して下さい")
       end
 
       it 'first_name_kanaが空では登録できない' do
@@ -63,7 +81,7 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Last name kana can't be blank")
       end
 
-        it "first_name_kanaのフリガナは全角（カタカナ）でなければ登録できない" do
+      it "first_name_kanaのフリガナは全角（カタカナ）でなければ登録できない" do
         @user.first_name_kana = "aiueo"
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana は全角カタカナで入力して下さい")
