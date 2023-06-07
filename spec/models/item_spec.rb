@@ -37,31 +37,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'categoryが未選択だと出品できない' do
-        @item.category_id = ''
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
       it 'item_conditionが未選択だと出品できない' do
-        @item.item_condition_id = ''
+        @item.item_condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Item condition can't be blank")
       end
 
       it 'delivery_feeが未選択だと出品できない' do
-        @item.delivery_fee_id = ''
+        @item.delivery_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
 
       it 'areaが未選択だと出品できない' do
-        @item.area_id = ''
+        @item.area_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Area can't be blank")
       end
 
       it 'delivery_dayが未選択だと出品できない' do
-        @item.delivery_day_id = ''
+        @item.delivery_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery day can't be blank")
       end
@@ -78,7 +78,13 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price Out of setting range", "Price Half-width number.")
       end
 
-      it 'priceが設定範囲以外だと出品できない' do
+      it '価格が300円未満では出品できない' do
+        @item.price = 290
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
+      end
+
+      it '価格が9_999_999円を超えると出品できない' do
         @item.price = 100000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
