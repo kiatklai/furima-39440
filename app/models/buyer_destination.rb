@@ -15,4 +15,10 @@ class BuyerDestination
     # トークンのバリデーション
     validates :token
   end
+
+  def save
+    buyer = Buyer.create(user_id: user_id, item_id: item_id)
+    # ストロングパラメーターでデータが運ばれ、それらが保存のタイミングで「buyer_id」が生成され、保存される。
+    Destination.create(buyer_id: buyer.id, post_code: post_code, area_id: area_id, city: city, address: address, building_name: building_name, phone_number: phone_number)
+  end
 end
