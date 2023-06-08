@@ -13,4 +13,5 @@ class User < ApplicationRecord
   format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: "は半角英数で入力して下さい" }
 
   has_many :items
+  has_many :buyers
 end
