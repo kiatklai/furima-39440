@@ -38,7 +38,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if @item.destroy
+    if @item.user_id == current_user.id
+      @item.destroy
       redirect_to root_path
     else
       redirect_to root_path
@@ -63,6 +64,6 @@ class ItemsController < ApplicationController
   end
 
   def non_edit_item
-    redirect_to root_path if current_user.id == @item.user_id || @item.buyer.present?
+    redirect_to root_path if current_user.id == @item.user_id && @item.buyer.present?
   end
 end
