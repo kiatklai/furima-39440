@@ -10,3 +10,8 @@
   color: gray;
   font-weight: bold;
 }
+
+#comments h4{
+  font-size: 25px;
+  font-weight: 600;
+}
