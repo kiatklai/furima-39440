@@ -88,6 +88,7 @@
         <p class="user-info"><%= comment.user.nickname %>： </p>
         <p><%= comment.text%></p>
       </div>
+      <p class="date"><%= comment.created_at.strftime("%Y年%m月%d日 %H時%M分")%></p>
     <% end %>
   </div>
 

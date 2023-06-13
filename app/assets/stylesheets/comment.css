@@ -1,9 +1,12 @@
 .comment{
   display: flex;
+  background-color: rgb(168, 247, 247);
+  border-radius: 10px;
 }
 
 .comment p{
-   margin: 0;
+   margin: 8px;
+   padding: 5px;
 }
 
 .user-info{
@@ -14,4 +17,10 @@
 #comments h4{
   font-size: 25px;
   font-weight: 600;
+  margin-left: 60px;
+}
+
+#comments .date {
+  font-size: 10px;
+  text-align: right;
 }
