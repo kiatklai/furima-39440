@@ -1,0 +1,17 @@
+.comment{
+  display: flex;
+}
+
+.comment p{
+   margin: 0;
+}
+
+.user-info{
+  color: gray;
+  font-weight: bold;
+}
+
+#comments h4{
+  font-size: 25px;
+  font-weight: 600;
+}
