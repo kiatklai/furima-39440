@@ -30,6 +30,7 @@
 - belongs_to :item
 - belongs_to :user
 - has_one :destination
+- has_many :comments
 
 ## destinations テーブル
 
@@ -66,3 +67,17 @@
 
 - belongs_to :user
 - has_one :buyer
+- has_many :comments
+
+## comments テーブル
+
+| Column      | Type       | Options                        |
+| ----------  | ---------  | ------------------------------ |
+| user        | references | null: false, foreign_key: true |
+| item        | references | null: false, foreign_key: true |
+| text        | text       | null: false                    |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
