@@ -1,5 +1,5 @@
 #サーバ上でのアプリケーションコードが設置されているディレクトリを変数に入れておく
-app_path = File.expand_path('../../../', __FILE__)  # 「../」が一つ増えている
+app_path = File.expand_path('../../../', __FILE__) 
 
 #アプリケーションサーバの性能を決定する
 worker_processes 1
@@ -36,7 +36,7 @@ before_fork do |server, worker|
     ActiveRecord::Base.connection.disconnect!
 
   if run_once
-    run_once = false # prevent from firing again
+    run_once = false 
   end
 
   old_pid = "#{server.config[:pid]}.oldbin"

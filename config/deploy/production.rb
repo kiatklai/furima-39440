@@ -1,5 +1,3 @@
-server '13.230.127.33', user: 'ec2-user', roles: %w{app db web}
-
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.
@@ -61,3 +59,5 @@ server '13.230.127.33', user: 'ec2-user', roles: %w{app db web}
 #     auth_methods: %w(publickey password)
 #     # password: "please use keys"
 #   }
+
+server '13.230.127.33', user: 'ec2-user', roles: %w{app db web}
